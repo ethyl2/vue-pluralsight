@@ -1,7 +1,17 @@
 import { format } from 'date-fns';
 import { inputDateFormat } from './constants';
+import axios from 'axios';
 
-const ourHeroes = [
+const getHeroes = async function() {
+  const response = await axios.get('api/heroes.json');
+  const heroes = response.data.map(hero => {
+    hero.originDate = format(hero.originDate, inputDateFormat);
+    return hero;
+  });
+  return heroes;
+};
+
+const ourHeroesHardcoded = [
   {
     id: 10,
     firstName: 'Ella',
@@ -37,5 +47,5 @@ const ourHeroes = [
 ];
 
 export const data = {
-  ourHeroes,
+  getHeroes,
 };
