@@ -22,6 +22,9 @@ const parseList = response => {
   if (response.status !== 200) throw Error(response.message);
   if (!response.data) return [];
   let list = response.data;
+  if (typeof list !== 'object') {
+    list = [];
+  }
   return list;
 };
 
