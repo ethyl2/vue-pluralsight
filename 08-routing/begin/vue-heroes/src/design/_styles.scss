@@ -21,8 +21,9 @@ div.color-line {
 }
 
 .menu-list .active-link,
-.menu-list .router-link-active {
-  color: #fff;
+.menu-list .router-link-active,
+.menut-list .router-link-exact-active {
+  color: white;
   background-color: $link;
 }
 
