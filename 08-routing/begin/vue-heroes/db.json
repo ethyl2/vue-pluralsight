@@ -2,35 +2,51 @@
   "heroes": [
     {
       "id": 10,
-      "firstName": "Ella",
-      "lastName": "Papa",
+      "firstName": "Claire",
+      "lastName": "Voyant",
       "capeCounter": 1,
-      "originDate": "1996-06-06",
-      "description": "fashionista"
+      "originDate": "1940-08-01",
+      "description": "Black Widow"
     },
     {
       "id": 20,
-      "firstName": "Smelly",
-      "lastName": "Papa",
+      "firstName": "Elizabeth 'Betty/Betsey' Ross",
+      "lastName": "Mace",
       "capeCounter": 3,
-      "originDate": "08/01/1998",
-      "description": "the cat whisperer"
+      "originDate": "1941-03-01",
+      "description": "Golden Girl"
     },
     {
       "id": 30,
-      "firstName": "Haley",
-      "lastName": "Papa",
+      "firstName": "Madeline",
+      "lastName": "Joyce-Frank",
       "capeCounter": 2,
-      "originDate": "09/01/1999",
-      "description": "pen wielder asdfjasldf;asdf"
+      "originDate": "1943-11-01",
+      "description": "Miss America"
     },
     {
       "id": 40,
-      "firstName": "Landon",
-      "lastName": "Papa",
+      "firstName": "Louise",
+      "lastName": "Grant-Mason",
       "capeCounter": 0,
-      "originDate": "10/01/2000",
-      "description": "arc trooper extraordinaire"
+      "originDate": "1946-09-01",
+      "description": "Blonde Phantom"
+    },
+    {
+      "id": 50,
+      "firstName": "Aquaria",
+      "lastName": "Neptunia",
+      "capeCounter": 0,
+      "originDate": "1947-05-01",
+      "description": "Namora"
+    },
+    {
+      "id": 60,
+      "firstName": "Mary",
+      "lastName": "Mitchell",
+      "capeCounter": 0,
+      "originDate": "1948-08-01",
+      "description": "Sun Girl"
     }
   ],
   "villains": [

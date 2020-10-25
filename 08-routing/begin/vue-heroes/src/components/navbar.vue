@@ -14,4 +14,3 @@ export default {
   name: 'Navbar',
 };
 </script>
-
