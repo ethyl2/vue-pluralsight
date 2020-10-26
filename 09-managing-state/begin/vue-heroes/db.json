@@ -2,35 +2,30 @@
   "heroes": [
     {
       "id": 10,
-      "firstName": "Ella",
-      "lastName": "Papa",
+      "firstName": "Ellabear",
+      "lastName": "Papa-Leaf",
       "capeCounter": 1,
       "originDate": "1996-06-06",
-      "description": "fashionista"
+      "description": "fashionista",
+      "fullName": "Ellabear Papa"
     },
     {
       "id": 20,
       "firstName": "Madelyn",
-      "lastName": "Papa",
+      "lastName": "Papa-Leaf",
       "capeCounter": 3,
-      "originDate": "08/01/1998",
-      "description": "the cat whisperer"
+      "originDate": "1998-08-01",
+      "description": "the cat whisperer",
+      "fullName": "Madelyn Papa"
     },
     {
       "id": 30,
       "firstName": "Haley",
-      "lastName": "Papa",
+      "lastName": "Papa-Leaf",
       "capeCounter": 2,
-      "originDate": "09/01/1999",
-      "description": "pen wielder"
-    },
-    {
-      "id": 40,
-      "firstName": "Landon",
-      "lastName": "Papa",
-      "capeCounter": 0,
-      "originDate": "10/01/2000",
-      "description": "arc trooper"
+      "originDate": "1999-09-01",
+      "description": "pen wielder",
+      "fullName": "Haley Papa"
     }
   ],
   "villains": [
@@ -87,6 +82,12 @@
       "firstName": "Jayne",
       "lastName": "Cobb",
       "description": "Ten percent of nothin' is ... let me do the math here ... nothin' into nothin' ... carry the nothin'"
+    },
+    {
+      "id": 100,
+      "firstName": "Peter Peter",
+      "lastName": "Pumpkin-Eater",
+      "description": "Had a wife and couldn't keep her"
     }
   ]
 }

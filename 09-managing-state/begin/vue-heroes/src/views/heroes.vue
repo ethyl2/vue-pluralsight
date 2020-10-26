@@ -61,13 +61,13 @@
 
 <script>
 import Modal from '@/components/modal';
-import { dataService } from '../shared';
+// import { dataService } from '../shared';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'Heroes',
   data() {
     return {
-      heroes: [],
       heroToDelete: null,
       message: '',
       showModal: false,
@@ -80,6 +80,7 @@ export default {
     await this.loadHeroes();
   },
   methods: {
+    ...mapActions(['getHeroesAction', 'deleteHeroAction']),
     askToDelete(hero) {
       this.heroToDelete = hero;
       this.showModal = true;
@@ -90,18 +91,37 @@ export default {
     async deleteHero() {
       this.closeModal();
       if (this.heroToDelete) {
-        dataService.deleteHero(this.heroToDelete);
+        //dataService.deleteHero(this.heroToDelete);
+        this.deleteHeroAction(this.heroToDelete);
       }
       await this.loadHeroes();
     },
     async loadHeroes() {
-      this.heroes = [];
       this.message = 'getting the heroes, please be patient';
-      this.heroes = await dataService.getHeroes();
+      // If we still had heroes stored as local state we could do this:
+      // this.heroes = this.$store.state.heroes;
+      // Original way to get heroes:
+      // this.heroes = await dataService.getHeroes();
+      // Let's get them from the store in computed instead
+      // And dispatch an action initially to get them from the API and put them in the store.
+      //await this.$store.dispatch('getHeroesAction');
+      // Shortcut:
+      await this.getHeroesAction();
       this.message = '';
     },
   },
   computed: {
+    // One way:
+    // heroes() {
+    //   return this.$store.state.heroes;
+    // },
+    // Another way:
+    //...mapState({ heroes: state => state.heroes }),
+    // Even shorter:
+    //...mapState({ heroes: 'heroes' }),
+    // And even shorter:
+    ...mapState(['heroes']),
+
     modalMessage() {
       const name =
         this.heroToDelete && this.heroToDelete.fullName

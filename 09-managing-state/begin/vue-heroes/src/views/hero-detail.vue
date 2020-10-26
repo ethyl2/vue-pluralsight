@@ -42,14 +42,28 @@
             <i class="fas fa-save"></i>
             <span>Save</span>
           </button>
+          <button class="link card-footer-item" @click="askToDelete()">
+            <i class="fas fa-trash"></i>
+            <span>Delete</span>
+          </button>
         </footer>
       </div>
     </div>
+    <Modal
+      :message="modalMessage"
+      :isOpen="showModal"
+      @handleNo="closeModal"
+      @handleYes="deleteHero"
+    >
+    </Modal>
   </div>
 </template>
 
 <script>
-import { dataService } from '../shared';
+// import { dataService } from '../shared';
+import { mapGetters, mapActions } from 'vuex';
+import { cloneDeep } from 'lodash';
+import Modal from '@/components/modal';
 
 export default {
   name: 'HeroDetail',
@@ -62,9 +76,13 @@ export default {
   data() {
     return {
       hero: {},
+      showModal: false,
     };
   },
-  async created() {
+  components: {
+    Modal,
+  },
+  created() {
     if (this.isAddMode) {
       this.hero = {
         id: undefined,
@@ -73,25 +91,49 @@ export default {
         description: '',
       };
     } else {
-      this.hero = await dataService.getHero(this.id);
+      // this.hero = await dataService.getHero(this.id);
+      // this.hero = { ...this.getHeroById(this.id) }; // makes a shallow copy. Wouldn't be enough if state is nested.
+      this.hero = cloneDeep(this.getHeroById(this.id));
     }
   },
   computed: {
+    ...mapGetters(['getHeroById']),
     isAddMode() {
       return !this.id;
     },
     title() {
       return `${this.isAddMode ? 'Add' : 'Edit'} Hero`;
     },
+    modalMessage() {
+      //return 'Are you sure you want to delete this hero?';
+      return this.showModal
+        ? `Would you like to delete ${this.hero.fullName} ?`
+        : '';
+    },
   },
   methods: {
+    ...mapActions(['updateHeroAction', 'addHeroAction', 'deleteHeroAction']),
+    askToDelete() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
     cancelHero() {
       this.$router.push({ name: 'heroes' });
     },
     async saveHero() {
+      // this.hero.id
+      //   ? await dataService.updateHero(this.hero)
+      //   : await dataService.addHero(this.hero);
       this.hero.id
-        ? await dataService.updateHero(this.hero)
-        : await dataService.addHero(this.hero);
+        ? await this.updateHeroAction(this.hero)
+        : await this.addHeroAction(this.hero);
+      this.$router.push({ name: 'heroes' });
+    },
+    async deleteHero() {
+      this.closeModal();
+      await this.deleteHeroAction(this.hero);
       this.$router.push({ name: 'heroes' });
     },
   },
